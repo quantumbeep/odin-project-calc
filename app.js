@@ -42,22 +42,26 @@ const operate = (op) => {
       result = add(a, b);
       console.log(`result: ${result}`);
       clearAll();
-      return result;
+      document.querySelector('#display').innerHTML = result;
+      break;
     case 'subtract':
       result = subtract(a, b);
       console.log(`result: ${result}`);
       clearAll();
-      return result;
+      document.querySelector('#display').innerHTML = result;
+      break;
     case 'multiply':
       result = multiply(a, b);
       console.log(`result: ${result}`);
       clearAll();
-      return result;
+      document.querySelector('#display').innerHTML = result;
+      break;
     case 'divide':
       result = divide(a, b);
       console.log(`result: ${result}`);
       clearAll();
-      return result;
+      document.querySelector('#display').innerHTML = result;
+      break;
     default:
       break;
   }
@@ -66,18 +70,21 @@ const operate = (op) => {
 const handleOp = (input) => {
   op = input;
   console.log(`Operator: ${op}`);
+  document.querySelector('#display').innerHTML = op;
 };
 
 const handleClick = (input) => {
   if (op === '') {
     arrayA.push(input);
     console.log(`array A ${arrayA}`);
+    formulate();
+    document.querySelector('#display').innerHTML = a;
   } else {
     arrayB.push(input);
     console.log(`array B ${arrayB}`);
+    formulate();
+    document.querySelector('#display').innerHTML = b;
   }
-
-  document.querySelector('#display').innerHTML = arrayA;
 };
 console.log(result);
 
