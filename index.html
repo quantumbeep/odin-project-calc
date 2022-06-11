@@ -20,11 +20,11 @@
       <button onclick="handleClick(8)">8</button>
       <button onclick="handleClick(9)">9</button>
       <button onclick="handleClick(0)">0</button>
-      <button onclick="handleOp('add')">+</button>
-      <button onclick="handleOp('subtract')">-</button>
-      <button onclick="handleOp('multiply')">*</button>
-      <button onclick="handleOp('divide')">/</button>
-      <button onclick="operate(op)">=</button>
+      <button class="operator-button" id="+"onclick="handleOp(this.id)">+</button>
+      <button class="operator-button" id="-" onclick="handleOp(this.id)">-</button>
+      <button class="operator-button" id="*" onclick="handleOp(this.id)">*</button>
+      <button class="operator-button" id="/" onclick="handleOp(this.id)">/</button>
+      <button id="=" onclick="operate(op)">=</button>
     </div>
     <script src="app.js"></script>
   </body>

@@ -14,7 +14,11 @@ const multiply = (a, b) => {
   return a * b;
 };
 const divide = (a, b) => {
-  return a / b;
+    if(b>0){
+
+        return a / b;
+    } 
+    return 'At the time writing this app in this universe, dividing by 0 is undefined.'
 };
 
 let result;
@@ -38,25 +42,25 @@ const formulate = () => {
 const operate = (op) => {
   formulate();
   switch (op) {
-    case 'add':
+    case '+':
       result = add(a, b);
       console.log(`result: ${result}`);
       clearAll();
       document.querySelector('#display').innerHTML = result;
       break;
-    case 'subtract':
+    case '-':
       result = subtract(a, b);
       console.log(`result: ${result}`);
       clearAll();
       document.querySelector('#display').innerHTML = result;
       break;
-    case 'multiply':
+    case '*':
       result = multiply(a, b);
       console.log(`result: ${result}`);
       clearAll();
       document.querySelector('#display').innerHTML = result;
       break;
-    case 'divide':
+    case '/':
       result = divide(a, b);
       console.log(`result: ${result}`);
       clearAll();
@@ -67,10 +71,10 @@ const operate = (op) => {
   }
 };
 
-const handleOp = (input) => {
-  op = input;
-  console.log(`Operator: ${op}`);
-  document.querySelector('#display').innerHTML = op;
+const handleOp = (id) => {
+  op = id
+  console.log(`Operator: ${id}`);
+  document.querySelector('#display').innerHTML = id;
 };
 
 const handleClick = (input) => {
