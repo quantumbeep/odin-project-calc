@@ -1,8 +1,13 @@
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(4, minmax(200px,400px));
   grid-gap: 0.5rem;
+  grid-auto-rows: minmax(150px, auto);
+  margin: 1rem 10rem ;
 }
 body {
     background-color: grey;
@@ -10,16 +15,22 @@ body {
 #display {
     grid-column: 1 / 5;
     grid-row: 1 / 2;
-    background-color: white;
+    background-color: lightgray;
     border-radius: 0.5rem;
-    padding: 0.5rem;
-    font-size: 1.5rem;
+    padding: 1rem;
+    font-size: 5rem;
     font-weight: bold;
     text-align: right;
+    height: 5rem;
+    margin: 1rem 10rem;
 }
 button {
-  font-size: 10rem;
+  font-size: 8rem;
   color: white;
   background: navy;
   border-radius: 1rem;
+  border-style: none;
+}
+button:active {
+  background: teal;
 }

@@ -98,14 +98,16 @@ const handleOp = (id) => {
 const handleNumInput = (input) => {
   if (array.length === 0) {
     array[0] = input;
-    document.querySelector('#display').innerHTML = parseInt(array[0]);
+    document.querySelector('#display').innerHTML = parseFloat(array[0]);
   } else {
     array[1] = input;
-    array[0] = array.join('');
-    document.querySelector('#display').innerHTML = parseInt(array[0]);
+
+    //regex matches any number of digits, an optional period, followed by any number of digits
+    array[0] = array.join('').match(/\d*\.?\d*/);
+    document.querySelector('#display').innerHTML = parseFloat(array[0]);
   }
 
-  numToCalc = parseInt(array[0]);
+  numToCalc = parseFloat(array[0]);
   console.log(`array: ${array}`);
   console.log(`numToCalc: ${numToCalc}`);
 };
