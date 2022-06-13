@@ -9,23 +9,25 @@
   </head>
   <body>
     <div id="display"></div>
-    <div>
-      <button onclick="handleClick(1)">1</button>
-      <button onclick="handleClick(2)">2</button>
-      <button onclick="handleClick(3)">3</button>
-      <button onclick="handleClick(4)">4</button>
-      <button onclick="handleClick(5)">5</button>
-      <button onclick="handleClick(6)">6</button>
-      <button onclick="handleClick(7)">7</button>
-      <button onclick="handleClick(8)">8</button>
-      <button onclick="handleClick(9)">9</button>
-      <button onclick="handleClick(0)">0</button>
+    <div class="wrapper">
+      <button id="number-button" onclick="handleNumInput(1)">1</button>
+      <button onclick="handleNumInput(2)">2</button>
+      <button onclick="handleNumInput(3)">3</button>
+      <button onclick="handleNumInput(4)">4</button>
+      <button onclick="handleNumInput(5)">5</button>
+      <button onclick="handleNumInput(6)">6</button>
+      <button onclick="handleNumInput(7)">7</button>
+      <button onclick="handleNumInput(8)">8</button>
+      <button onclick="handleNumInput(9)">9</button>
+      <button onclick="handleNumInput(0)">0</button>
       <button class="operator-button" id="+"onclick="handleOp(this.id)">+</button>
       <button class="operator-button" id="-" onclick="handleOp(this.id)">-</button>
       <button class="operator-button" id="*" onclick="handleOp(this.id)">*</button>
       <button class="operator-button" id="/" onclick="handleOp(this.id)">/</button>
       <button id="=" onclick="operate(op)">=</button>
+      <button id="AC" onclick="clearAll()">AC</button>
     </div>
+
     <script src="app.js"></script>
   </body>
 </html>

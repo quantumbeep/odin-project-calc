@@ -1,69 +1,74 @@
-let arrayA = [];
-let arrayB = [];
+let array = [];
+let arrayCalc = [];
 let op = '';
-let a;
-let b;
-
-const add = (a, b) => {
-  return a + b;
-};
-const subtract = (a, b) => {
-  return a - b;
-};
-const multiply = (a, b) => {
-  return a * b;
-};
-const divide = (a, b) => {
-    if(b>0){
-
-        return a / b;
-    } 
-    return 'At the time writing this app in this universe, dividing by 0 is undefined.'
-};
-
+let numA;
+let numB;
 let result;
+let numToCalc;
+
+const add = () => {
+  return arrayCalc.reduce((prev, curr) => prev + curr);
+};
+const subtract = () => {
+  return arrayCalc.reduce((prev, curr) => prev - curr);
+};
+const multiply = () => {
+  return arrayCalc.reduce((prev, curr) => prev * curr);
+};
+const divide = () => {
+  return arrayCalc.reduce((prev, curr) => {
+    return curr !== 0
+      ? prev / curr
+      : {
+        'At this time and universe, dividing by 0 is undefined.';
+  });
+};
 
 //function to clear all
 const clearAll = () => {
-  arrayA = [];
-  arrayB = [];
+  array = [];
+  arrayCalc = [];
   op = '';
-};
+  document.querySelector('#display').innerHTML = '';
 
-//
-const formulate = () => {
-  console.log('formulating from arrays');
-  a = parseInt(arrayA.join(''));
-  b = parseInt(arrayB.join(''));
-  console.log(a, b);
+  console.log(`operator after AC: ${op}`);
 };
 
 //takes an operator and 2 numbers and then calls one of the above functions on the numbers.
 const operate = (op) => {
-  formulate();
+  arrayCalc[1] = numToCalc;
+  console.log(`arrayCalc: ${arrayCalc}`);
   switch (op) {
     case '+':
-      result = add(a, b);
+      result = add();
       console.log(`result: ${result}`);
       clearAll();
+      arrayCalc[0] = result;
+      console.log(arrayCalc);
       document.querySelector('#display').innerHTML = result;
       break;
     case '-':
-      result = subtract(a, b);
+      result = subtract();
       console.log(`result: ${result}`);
       clearAll();
+      arrayCalc[0] = result;
+      console.log(arrayCalc);
       document.querySelector('#display').innerHTML = result;
       break;
     case '*':
-      result = multiply(a, b);
+      result = multiply();
       console.log(`result: ${result}`);
       clearAll();
+      arrayCalc[0] = result;
+      console.log(arrayCalc);
       document.querySelector('#display').innerHTML = result;
       break;
     case '/':
-      result = divide(a, b);
+      result = divide();
       console.log(`result: ${result}`);
       clearAll();
+      arrayCalc[0] = result;
+      console.log(arrayCalc);
       document.querySelector('#display').innerHTML = result;
       break;
     default:
@@ -72,24 +77,40 @@ const operate = (op) => {
 };
 
 const handleOp = (id) => {
-  op = id
   console.log(`Operator: ${id}`);
   document.querySelector('#display').innerHTML = id;
-};
-
-const handleClick = (input) => {
-  if (op === '') {
-    arrayA.push(input);
-    console.log(`array A ${arrayA}`);
-    formulate();
-    document.querySelector('#display').innerHTML = a;
+  array = [];
+  if (arrayCalc.length === 1 && op) {
+    arrayCalc[1] = numToCalc;
+    operate(op);
+    op = id;
+  } else if (arrayCalc.length === 1) {
+    op = id;
+    arrayCalc[1] = numToCalc;
+    console.log(`arrayCalc: ${arrayCalc}`);
+    operate(op);
   } else {
-    arrayB.push(input);
-    console.log(`array B ${arrayB}`);
-    formulate();
-    document.querySelector('#display').innerHTML = b;
+    op = id;
+    arrayCalc[0] = numToCalc;
+    console.log(`arrayCalc: ${arrayCalc}`);
   }
 };
+
+const handleNumInput = (input) => {
+  if (array.length === 0) {
+    array[0] = input;
+    document.querySelector('#display').innerHTML = parseInt(array[0]);
+  } else {
+    array[1] = input;
+    array[0] = array.join('');
+    document.querySelector('#display').innerHTML = parseInt(array[0]);
+  }
+
+  numToCalc = parseInt(array[0]);
+  console.log(`array: ${array}`);
+  console.log(`numToCalc: ${numToCalc}`);
+};
+
 console.log(result);
 
 //if a number was clicked, and no operator was clicked, store it in array A
