@@ -19,8 +19,7 @@ const divide = () => {
   return arrayCalc.reduce((prev, curr) => {
     return curr !== 0
       ? prev / curr
-      : {
-        'At this time and universe, dividing by 0 is undefined.';
+      : 'At this time and universe, dividing by 0 is undefined.';
   });
 };
 
